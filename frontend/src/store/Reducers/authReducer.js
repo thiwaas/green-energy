@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import api from '../../api/api'
 
@@ -6,10 +7,10 @@ export const admin_login = createAsyncThunk(
   async (info) => {
     console.log(info)
     try {
-        const { data } = await api.post('/admin-login', info, { withCredential : true })
-        console.log(info)
+        const { data } = await api.post('/admin-login', info, { withCredentials : true })
+        console.log(data)
     } catch (error) {
-
+      console.log(error.response.data)
     }
   }
 )
