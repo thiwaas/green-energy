@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from 'react'
+import { PropagateLoader } from 'react-spinners'
 import { useDispatch, useSelector } from 'react-redux'
 import { admin_login } from '../../store/Reducers/authReducer'
 

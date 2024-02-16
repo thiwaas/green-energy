@@ -15,7 +15,7 @@ export const admin_login = createAsyncThunk(
   }
 )
 
-export const counterSlice = createSlice({
+export const authReducer = createSlice({
   name: 'auth',
   initialState : {
         successMessage : '',
@@ -36,5 +36,5 @@ export const counterSlice = createSlice({
   },
 })
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
-export default counterSlice.reducer
+export const { increment, decrement, incrementByAmount } = authReducer.actions
+export default authReducer.reducer
