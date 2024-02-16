@@ -4,37 +4,40 @@ import api from '../../api/api'
 
 export const admin_login = createAsyncThunk(
   'auth/admin_login',
-  async (info) => {
-    console.log(info)
+  async (info, { rejectWithValue, fulfillWithValue }) => {
     try {
-        const { data } = await api.post('/admin-login', info, { withCredentials : true })
-        console.log(data)
+      const { data } = await api.post('/admin-login', info, { withCredentials: true });
+      return fulfillWithValue(data);
     } catch (error) {
-      console.log(error.response.data)
+      return rejectWithValue(error.response.data);
     }
   }
-)
+);
 
 export const authReducer = createSlice({
   name: 'auth',
-  initialState : {
-        successMessage : '',
-        errorMessage : '',
-        loader : false,
-        userInfo : ''
+  initialState: {
+    successMessage: '',
+    errorMessage: '',
+    loader: false,
+    userInfo: ''
   },
   reducers: {
     increment(state) {
-      state.value++
-    },
-    decrement(state) {
-      state.value--
-    },
-    incrementByAmount(state, action) {
-      state.value += action.payload
-    },
+      state.value++;
+    }
   },
-})
+  extraReducers: (builder) => {
+    builder
+      .addCase(admin_login.pending, (state, _) => {
+        state.loader = true;
+      })
+      .addCase(admin_login.rejected, (state, {payload}) => {
+        state.loader = false;
+        state.errorMessage = payload.payload || 'Password Wrong';
+      })
+  }
+});
 
-export const { increment, decrement, incrementByAmount } = authReducer.actions
-export default authReducer.reducer
+export const { increment } = authReducer.actions;
+export default authReducer.reducer;
