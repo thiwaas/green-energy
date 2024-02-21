@@ -1,15 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState, useEffect } from 'react';
 import { PropagateLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
-import toast from 'react-hot-toast'
-import { admin_login } from '../../store/Reducers/authReducer';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom'; // Fix the typo here
+import { admin_login, messageClear } from '../../store/Reducers/authReducer';
 
 const AdminLogin = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loader, errorMessage } = useSelector(state => state.auth);
-  const [state, setState] = useState({
+  const { loader, errorMessage, successMessage } = useSelector(state => state.auth);
+  const [state, setState] = useState({ // Fix the typo here
     email: '',
     password: '',
   });
@@ -36,9 +39,15 @@ const AdminLogin = () => {
 
   useEffect(() => {
     if(errorMessage){
-      toast.error(errorMessage)
+      toast.error(errorMessage);
+      dispatch(messageClear());
     }
-  }, [errorMessage]);
+    if (successMessage) {
+      toast.success(successMessage);
+      dispatch(messageClear());
+      navigate('/');
+    }
+  }, [errorMessage, successMessage]);
 
   return (
     <div className='min-w-screen min-h-screen bg-[#161d31] flex justify-center items-center'>

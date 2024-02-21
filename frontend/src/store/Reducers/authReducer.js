@@ -7,6 +7,7 @@ export const admin_login = createAsyncThunk(
   async (info, { rejectWithValue, fulfillWithValue }) => {
     try {
       const { data } = await api.post('/admin-login', info, { withCredentials: true });
+      localStorage.setItem('accessToken',data.token)
       return fulfillWithValue(data);
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -23,8 +24,9 @@ export const authReducer = createSlice({
     userInfo: ''
   },
   reducers: {
-    increment(state) {
-      state.value++;
+    messageClear: (state,_) => {
+      state.errorMessage = ""
+      state.successMessage = ""
     }
   },
   extraReducers: (builder) => {
@@ -36,8 +38,12 @@ export const authReducer = createSlice({
         state.loader = false;
         state.errorMessage = payload.payload || 'Password Wrong';
       })
+      .addCase(admin_login.fulfilled, (state, {payload}) => {
+        state.loader = false;
+        state.successMessage = payload.message
+      })
   }
 });
 
-export const { increment } = authReducer.actions;
+export const { messageClear } = authReducer.actions;
 export default authReducer.reducer;
