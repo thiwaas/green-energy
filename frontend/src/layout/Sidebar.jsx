@@ -10,7 +10,6 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
     const navs = getNavs('admin')
     setAllNav(navs)
   }, [])
-  console.log (pathname)
   return (
     <div>
       <div onClick={() => setShowSidebar(false)} className={`fixed duration-200 ${!showSidebar ? 'invisible' : 'visible'} w-screen h-screen bg-[#22292f80] top-0 left-0 z-10`}></div>
