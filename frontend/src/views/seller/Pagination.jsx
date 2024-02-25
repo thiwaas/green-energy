@@ -42,6 +42,11 @@ const Pagination = ({pageNumber,setPageNumber,totalItem,parPage,showItem}) => {
             {
                 createBtn ()
             }
+            {
+               pageNumber < totalPage  && <li onClick={() => setPageNumber(pageNumber + 1)} className='w-[33px] h-[33px] rounded-full flex justify-center items-center bg-slate-700 text-[#d0d2d6] cursor-pointer'>
+                   <BsChevronDoubleRight />
+               </li>   
+            }
         </ul>
     )
 }
