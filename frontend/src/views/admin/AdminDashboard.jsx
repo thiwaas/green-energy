@@ -202,7 +202,7 @@ const AdminDashboard = () => {
               <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
                 <Link>view</Link>
               </td>
-            </tr>)
+              </tr>)
             }
           </table>
         </div>
