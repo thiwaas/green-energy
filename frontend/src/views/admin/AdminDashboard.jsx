@@ -188,22 +188,22 @@ const AdminDashboard = () => {
               </tr>
             </thead>
             <tbody>
+              {
+                [1, 2, 3, 4, 5].map((d, i) => <tr key={i}>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>#455fdf54545</td>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>$656</td>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                    <span>pending</span>
+                  </td>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                    <span>pending</span>
+                  </td>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                    <Link>view</Link>
+                  </td>
+                </tr>)
+              }
             </tbody>
-            {
-              [1, 2, 3, 4, 5].map((d, i) => <tr key={i}>
-              <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>#455fdf54545</td>
-              <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>$656</td>
-              <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                <span>pending</span>
-              </td>
-              <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                <span>pending</span>
-              </td>
-              <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                <Link>view</Link>
-              </td>
-              </tr>)
-            }
           </table>
         </div>
       </div>

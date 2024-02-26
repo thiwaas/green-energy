@@ -41,24 +41,24 @@ const Category = () => {
                                 </tr>
                             </thead>
                             <tbody>
+                                {
+                                    [1, 2, 3, 4, 5].map((d, i) => <tr key={i}>
+                                        <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>{d}</td>
+                                        <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
+                                            <img className='w-[45px] h-[45px]' src={`http://localhost:3000/images/category/${d}.jpg`} alt="" />
+                                        </td>
+                                        <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
+                                            <span>Sports</span>
+                                        </td>
+                                        <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
+                                            <div className='flex justify-start items-center gap-4'>
+                                                <Link className='p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50'><FaEdit /></Link>
+                                                <Link className='p-[6px] bg-red-500 rounded hover:shadow-lg hover:shadow-red-500/50'><FaTrash /></Link>
+                                            </div>
+                                        </td>
+                                    </tr>)
+                                }
                             </tbody>
-                            {
-                                [1, 2, 3, 4, 5].map((d, i) => <tr key={i}>
-                                    <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>{d}</td>
-                                    <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <img className='w-[45px] h-[45px]' src={`http://localhost:3000/images/category/${d}.jpg`} alt="" />
-                                    </td>
-                                    <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <span>Sports</span>
-                                    </td>
-                                    <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                        <div className='flex justify-start items-center gap-4'>
-                                            <Link className='p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50'><FaEdit /></Link>
-                                            <Link className='p-[6px] bg-red-500 rounded hover:shadow-lg hover:shadow-red-500/50'><FaTrash /></Link>
-                                        </div>
-                                    </td>
-                                </tr>)
-                            }
                         </table>
                     </div>
                     <div className='w-full flex justify-end mt-4 bottom-4 right-4 '>
