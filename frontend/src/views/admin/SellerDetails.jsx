@@ -12,6 +12,33 @@ const SellerDetail = () => {
               </div>
             </div>
             <div className='w-4/12'>
+              <div className='px-0 md:px-5 py-2'>
+                <div className='py-2 text-lg'>
+                  <h2>Basic Info</h2>
+                </div>
+                <div className='flex justify-between text-sm flex-col gap-2 p-4 bg-slate-800 rounded-md'>
+                  <div className='flex gap-2'>
+                    <span>Name : </span>
+                    <span>Thiwanka Malinga</span>
+                  </div>
+                  <div className='flex gap-2'>
+                    <span>Name : </span>
+                    <span>Thiwanka Malinga</span>
+                  </div>
+                  <div className='flex gap-2'>
+                    <span>Name : </span>
+                    <span>Thiwanka Malinga</span>
+                  </div>
+                  <div className='flex gap-2'>
+                    <span>Name : </span>
+                    <span>Thiwanka Malinga</span>
+                  </div>
+                  <div className='flex gap-2'>
+                    <span>Name : </span>
+                    <span>Thiwanka Malinga</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
