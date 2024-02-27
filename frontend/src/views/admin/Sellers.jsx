@@ -19,7 +19,7 @@ const Sellers = () => {
                     <option value= "5">15</option>
                     <option value= "5">25</option>
                 </select>
-                <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder= 'search'/>
+                <input onChange={e => setSearchValue(e.target.value)} value={searchValue} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]' type="text" placeholder='search' />
             </div>
             <div className='relative overflow-x-auto'>
                 <table className='w-full text-sm text-left text-[#d0d2d6]'>
@@ -71,15 +71,17 @@ const Sellers = () => {
                     </tbody>
                 </table>
             </div>
-            <div className='w-full flex justify-end mt-4 bottom-4 right-4 '>
-                <Pagination
-                    pageNumber = {currentPage}
-                    setPageNumber = {setCurrentPage}
-                    totalItem = {50}
-                    parPage = {parPage}
-                    showItem = {4}
-                />
-            </div>
+            {
+                <div className='w-full flex justify-end mt-4 bottom-4 right-4 '>
+                    <Pagination
+                        pageNumber = {currentPage}
+                        setPageNumber = {setCurrentPage}
+                        totalItem = {50}
+                        parPage = {parPage}
+                        showItem = {4}
+                    />
+                </div>
+            }
         </div>
     </div>
   )
