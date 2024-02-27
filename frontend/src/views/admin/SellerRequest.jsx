@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/scope */
 /* eslint-disable no-unused-vars */
-import React, { useState }from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import { FaEye } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import Pagination from '../seller/Pagination'
 
-const Sellers = () => {
-    const [currentPage, setCurrentPage] = useState(5)
+const SellerRequest = () => {
+    const [currentPage, setCurrentPage] = useState(1)
     const [searchValue, setSearchValue] = useState('')
     const [parPage, setParPage] = useState(5)
     const [show, setShow] = useState(false)
@@ -26,44 +26,32 @@ const Sellers = () => {
                     <thead className='text-xs text-[#d0d2d6] uppercase border-b border-slate-700'>
                         <tr>
                             <th scope='col' className='py-3 px-4'>No</th>
-                            <th scope='col' className='py-3 px-4'>Image</th>
                             <th scope='col' className='py-3 px-4'>Name</th>
-                            <th scope='col' className='py-3 px-4'>Shop Name</th>
-                            <th scope='col' className='py-3 px-4'>Payment Status</th>
                             <th scope='col' className='py-3 px-4'>Email</th>
-                            <th scope='col' className='py-3 px-4'>Devision</th>
-                            <th scope='col' className='py-3 px-4'>District</th>
+                            <th scope='col' className='py-3 px-4'>Payment Status</th>
+                            <th scope='col' className='py-3 px-4'>Status</th>
                             <th scope='col' className='py-3 px-4'>Action</th>
                         </tr>  
                     </thead>
                     <tbody className='text-sm font-normal'>
                         {
-                            [1, 2, 3, 4, 5].map((d, i) => <tr key={i}>
-                                <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>{i + 1}</td>
-                                <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                    <img className='w-[45px] h-[45px]' src={`http://localhost:3000/images/category/${d}.jpg`} alt="" />
-                                </td>
-                                <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
+                            [1, 2, 3, 4, 5].map((d, i) => <tr className='border-b border-slate-700' key={i}>
+                                <td scope='row' className='py-2 px-4 font-normal whitespace-nowrap'>{i + 1}</td>
+                                <td scope='row' className='py-2 px-4 font-normal whitespace-nowrap'>
                                     <span>Thiwanka Malinga</span> 
                                 </td>
-                                <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                    <span>Tryst</span> 
+                                <td scope='row' className='py-2 px-4 font-normal whitespace-nowrap'>
+                                    <span>thiwankamalinga@gmail.com</span> 
                                 </td> 
-                                <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
+                                <td scope='row' className='py-2 px-4 font-normal whitespace-nowrap'>
+                                    <span>Inactive</span> 
+                                </td>
+                                <td scope='row' className='py-2 px-4 font-normal whitespace-nowrap'>
                                     <span>Pending</span> 
                                 </td>
-                                <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                    <span>thiwankamalinga@gmail.com</span> 
-                                </td>
-                                <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                    <span>Kurunegala</span> 
-                                </td>
-                                <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                                    <span>Maho</span> 
-                                </td>
-                                <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
+                                <td scope='row' className='py-2 px-4 font-normalwhitespace-nowrap'>
                                     <div className='flex justify-start items-center gap-4'>
-                                        <Link to='/admin/dashboard/seller/details/1'className='p-[6px] bg-green-500 rounded hover:shadow-lg hover:shadow-green-500/50'><FaEye /></Link>
+                                        <Link className='p-[6px] bg-green-500 rounded hover:shadow-lg hover:shadow-green-500/50'><FaEye /></Link>
                                     </div>
                                 </td>
                             </tr>)
@@ -87,4 +75,4 @@ const Sellers = () => {
   )
 }
 
-export default Sellers
+export default SellerRequest
