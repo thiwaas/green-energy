@@ -36,7 +36,74 @@ const OrderDetails = () => {
                         <div className='flex gap-3 text-md'>
                           <img className='w-[45px] h-[45px]' src={`http://localhost:3000/images/category/1.jpg`} alt="" />
                           <div>
-                            
+                            <h2>long long T-Shirt</h2>
+                            <p>
+                              <span>Brand : </span>
+                              <span>Easy</span>
+                              <span className='text-lg'> Quantity : 2 </span>
+                            </p>
+                          </ div>
+                        </div>
+                        <div className='flex gap-3 text-md'>
+                          <img className='w-[45px] h-[45px]' src={`http://localhost:3000/images/category/1.jpg`} alt="" />
+                          <div>
+                            <h2>long long T-Shirt</h2>
+                            <p>
+                              <span>Brand : </span>
+                              <span>Easy</span>
+                              <span className='text-lg'> Quantity : 2 </span>
+                            </p>
+                          </div>
+                        </div>
+                        <div className='flex gap-3 text-md'>
+                          <img className='w-[45px] h-[45px]' src={`http://localhost:3000/images/category/1.jpg`} alt="" />
+                          <div>
+                            <h2>long long T-Shirt</h2>
+                            <p>
+                              <span>Brand : </span>
+                              <span>Easy</span>
+                              <span className='text-lg'> Quantity : 2 </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='w-[68%]'>
+                  <div className='pl-3'>
+                    <div className='mt-4 flex flex-col'>
+                      <div className='text-[#d0d2d6] mb-6'>
+                        <div className='flex justify-start items-center gap-3'>
+                          <h2>Seller 1 oder</h2>
+                          <span>pending</span>
+                        </div>
+                        <div className='flex gap-3 text-md mt-2'>
+                          <img className='w-[45px] h-[45px]' src={`http://localhost:3000/images/category/1.jpg`} alt="" />
+                          <div>
+                            <h2>long long T-Shirt</h2>
+                            <p>
+                              <span>Brand : </span>
+                              <span>Easy</span>
+                              <span className='text-lg'> Quantity : 2 </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='text-[#d0d2d6]'>
+                        <div className='flex justify-start items-center gap-3'>
+                          <h2>Seller 2 oder</h2>
+                          <span>pending</span>
+                        </div>
+                        <div className='flex gap-3 text-md mt-2'>
+                          <img className='w-[45px] h-[45px]' src={`http://localhost:3000/images/category/1.jpg`} alt="" />
+                          <div>
+                            <h2>long long T-Shirt</h2>
+                            <p>
+                              <span>Brand : </span>
+                              <span>Easy</span>
+                              <span className='text-lg'> Quantity : 2 </span>
+                            </p>
                           </div>
                         </div>
                       </div>
