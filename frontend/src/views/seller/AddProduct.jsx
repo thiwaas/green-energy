@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, cateShow } from 'react'
 import { Link } from 'react-router-dom'
 
 const AddProduct = () => {
@@ -26,9 +26,14 @@ const AddProduct = () => {
             <div>
                 <form>
                     <div className='flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]'>
-                        <div className='flex flex-col w-full gap-1'>
+                        <div className='flex flex-col w-full gap-1 relative'>
                             <label htmlFor="brand">Product name</label>
                             <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]'onChange={inputHandle} value={state.name} type="text" placeholder='Product name' name='name' id='name' />
+                            <div className={`absolute top-[101%] bg-slate-800 w-full transition-all ${cateShow ? 'scale-100' : 'scale-0'}`}>
+                                <div className='w-full px-4 py-2 fixed'>
+                                    <input className='px-3 py-1 focus:border-indigo-500 outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden'type="text" placeholder='search'/>
+                                </div>
+                            </div>
                         </div>
                         <div className='flex flex-col w-full gap-1'>
                             <label htmlFor="name">Product brand</label>
