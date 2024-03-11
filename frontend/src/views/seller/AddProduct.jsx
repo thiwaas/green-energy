@@ -2,6 +2,28 @@ import React, { useState, cateShow } from 'react'
 import { Link } from 'react-router-dom'
 
 const AddProduct = () => {
+    const categorys = [
+        {
+            id : 1 ,
+            name : 'Sports'
+        },
+        {
+            id : 2 ,
+            name : 'Mobile'
+        },
+        {
+            id : 3 ,
+            name : 'Jarcy'
+        },
+        {
+            id : 4 ,
+            name : 'Pant'
+        },
+        {
+            id : 5 ,
+            name : 'Watch'
+        }
+    ]
     const [state, setState] = useState({
         name : "",
         description : '',
@@ -16,6 +38,12 @@ const AddProduct = () => {
             [e.target.name] : e.target.value
         })
     }
+
+  const [cateShow, setCateShow] = useState(false)
+  const [category, setCategory] = useState('')
+  const [allCategory, setAllCategory] = useState([])
+  const [searchValue, setSearchValue] = useState('')
+
   return (
     <div className='px-2 lg:px-7 pt-5'>
         <div className='w-full p-4 bg-[#283046] rounded-md'>
@@ -46,7 +74,18 @@ const AddProduct = () => {
                             <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]'onChange={inputHandle} value={state.name} type="text" placeholder='Product name' name='name' id='name' />
                             <div className={`absolute top-[101%] bg-slate-800 w-full transition-all ${cateShow? 'scale-100' : 'scale-0'}`}>
                                 <div className='w-full px-4 py-2 fixed'>
-                                    <input className='px-4 py-2 focus:border-indigo-500 outline' type="text" placeholder='search' />
+                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden' type="text" placeholder='search' />
+                                </div>
+                                <div className='pt-14'></div>
+                                <div className='flex justify-start items-start flex-col h-[200px] overflow-x-scrool'>
+                                    {
+                                        allCategory.map((c, i) => <span onClick={()=>{
+                                            setCateShow(false)
+                                            setCategory(c.name)
+                                            setSearchValue('')
+                                            setAllCategory(categorys)
+                                        }}>{c.name}</span>)
+                                    }
                                 </div>
                             </div>
                             <div className={`absolute top-[101%] bg-slate-800 w-full transition-all ${cateShow ? 'scale-100' : 'scale-0'}`}>
