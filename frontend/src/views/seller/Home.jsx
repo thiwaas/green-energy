@@ -1,110 +1,215 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, cateShow } from 'react'
+/* eslint-disable jsx-a11y/scope */
+import React from 'react'
+import { BsCurrencyDollar } from 'react-icons/bs'
+import { RiProductHuntLine } from 'react-icons/ri'
+import { FaUsers } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
+import Chart from 'react-apexcharts'
 
-const AddProduct = () => {
-    const categorys = [
-        {
-            id : 1 ,
-            name : 'Sports'
-        },
-        {
-            id : 2 ,
-            name : 'Mobile'
-        },
-        {
-            id : 3 ,
-            name : 'Jarcy'
-        },
-        {
-            id : 4 ,
-            name : 'Pant'
-        },
-        {
-            id : 5 ,
-            name : 'Watch'
+
+const SellerDashboard = () => {
+  const state = {
+    series : [
+      {
+        name : "Orders",
+        data : [34, 65, 34, 65, 34, 34, 34, 56, 23, 67, 23, 45]
+      },
+      {
+        name : "Revenue",
+        data : [34, 32, 45, 32, 34, 34, 43, 56, 65, 67, 45, 78]
+      },
+      {
+        name : "Sales",
+        data : [78, 32, 34, 54, 65, 34, 54, 21, 54, 43, 45, 43]
         }
-    ]
-    const [state, setState] = useState({
-        name : "",
-        description : '',
-        discount : '',
-        price : "",
-        brand : "",
-        stock : ""
-    })
-    const inputHandle = (e) => {
-        setState({
-            ...state,
-            [e.target.name] : e.target.value
-        })
+    ],
+    options : {
+      color : ['#181ee8', '#181ee8'],
+      plotOptions : {
+        radius : 30
+      },
+      chart : {
+        background : 'transparent',
+        foreColor : '#d0d2d6'
+      },
+      dataLabels : {
+        enabled : false
+      },
+      stroke : {
+        show :  true,
+        curve : ['smooth', 'straight','stepline'],
+        lineCap : 'butt',
+        colors : '#f0f0f0',
+        width : 5,
+        dashArray : 0
+      },
+      xaxis : {
+        categories : ['Jan','Feb','Mar','Api','May','Jun','jul','Aug','Sep','Oct','Nov','Dec']
+      },
+      legend : {
+        position : 'top'
+      },
+      responsive : [
+        {
+          breakpoint : 565,
+          yaxis : {
+            categories : ['Jan','Feb','Mar','Api','May','Jun','jul','Aug','Sep','Oct','Nov','Dec']
+          },
+          options : {
+            plotOptions : {
+              bar : {
+                horizontal : true
+              }
+            },
+            chart : {
+              height : "550px"
+            }
+          }
+        }
+      ]
     }
-
-  const [cateShow, setCateShow] = useState(false)
-  const [category, setCategory] = useState('')
-  const [allCategory, setAllCategory] = useState([])
-  const [searchValue, setSearchValue] = useState('')
-
+  };
   return (
-    <div className='px-2 lg:px-7 pt-5'>
-        <div className='w-full p-4 bg-[#283046] rounded-md'>
-            <div className='flex justify-between items-center pb-4'>
-                <h1 className='text-[#d0d2d6] text-al font-semibold'>Add Product</h1>
-                <Link className='bg-blue-500 hover:shadow-blue-500/50 hover:shadow-lg text-white rounded-md px-7 py-2 my-2'to='/seller/dashboard/products'>Products</Link>
-            </div>
-            <div>
-                <form>
-                    <div className='flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]'>
-                        <div className='flex flex-col w-full gap-1 relative'>
-                            <label htmlFor="brand">Product name</label>
-                            <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]'onChange={inputHandle} value={state.name} type="text" placeholder='Product name' name='name' id='name' />
-                            <div className={`absolute top-[101%] bg-slate-800 w-full transition-all ${cateShow ? 'scale-100' : 'scale-0'}`}>
-                                <div className='w-full px-4 py-2 fixed'>
-                                    <input className='px-3 py-1 focus:border-indigo-500 outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden'type="text" placeholder='search'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex flex-col w-full gap-1'>
-                            <label htmlFor="name">Product brand</label>
-                            <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]'onChange={inputHandle} value={state.brand} type="text" placeholder='Product brand' name='brand' id='brand' />
-                        </div>
-                    </div>
-                    <div className='flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]'>
-                        <div className='flex flex-col w-full gap-1 relative'>
-                            <label htmlFor="category">Category</label>
-                            <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]'onChange={inputHandle} value={state.name} type="text" placeholder='Product name' name='name' id='name' />
-                            <div className={`absolute top-[101%] bg-slate-800 w-full transition-all ${cateShow? 'scale-100' : 'scale-0'}`}>
-                                <div className='w-full px-4 py-2 fixed'>
-                                    <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden' type="text" placeholder='search' />
-                                </div>
-                                <div className='pt-14'></div>
-                                <div className='flex justify-start items-start flex-col h-[200px] overflow-x-scrool'>
-                                    {
-                                        allCategory.map((c, i) => <span onClick={()=>{
-                                            setCateShow(false)
-                                            setCategory(c.name)
-                                            setSearchValue('')
-                                            setAllCategory(categorys)
-                                        }}>{c.name}</span>)
-                                    }
-                                </div>
-                            </div>
-                            <div className={`absolute top-[101%] bg-slate-800 w-full transition-all ${cateShow ? 'scale-100' : 'scale-0'}`}>
-                                <div className='w-full px-4 py-2 fixed'>
-                                    <input className='px-3 py-1 focus:border-indigo-500 outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden'type="text" placeholder='search'/>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex flex-col w-full gap-1'>
-                            <label htmlFor="stock">Stock</label>
-                            <input className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#283046] border border-slate-700 rounded-md text-[#d0d2d6]'onChange={inputHandle} value={state.stock} type="text" placeholder='Product stock' name='stock' id='stock' />
-                        </div>
-                    </div>
-                </form>
-            </div>
+    <div className='px-2 md:px-7 py-5'>
+      <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7'>
+        <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3 '>
+          <div className='flex flex-col justify-start items-start text-[#dod2d6]'>
+            <h2 className='text-3xl font-bold'>$6566</h2>
+            <span className='text-md font-medium'>Total Sales</span>
+          </div>
+          <div className='w-[46px] h-[47px] rounded-full bg-[#28c76f1f] flex justify-center items-center text-xl'>
+            <BsCurrencyDollar className='text-[#28c76f] shadow-lg' />
+          </div>
         </div>
+        <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3 '>
+          <div className='flex flex-col justify-start items-start text-[#dod2d6]'>
+            <h2 className='text-3xl font-bold'>20</h2>
+            <span className='text-md font-medium'>Products</span>
+          </div>
+          <div className='w-[46px] h-[47px] rounded-full bg-[#e000e81f] flex justify-center items-center text-xl'>
+            <RiProductHuntLine className='text-[#cd00e8] shadow-lg' />
+          </div>
+        </div>
+        <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3 '>
+          <div className='flex flex-col justify-start items-start text-[#dod2d6]'>
+            <h2 className='text-3xl font-bold'>50</h2>
+            <span className='text-md font-medium'>Orders</span>
+          </div>
+          <div className='w-[46px] h-[47px] rounded-full bg-[#00cfe81f] flex justify-center items-center text-xl'>
+            <AiOutlineShoppingCart className='text-[#00cfe8] shadow-lg' />
+          </div>
+        </div>
+        <div className='flex justify-between items-center p-5 bg-[#283046] rounded-md gap-3 '>
+          <div className='flex flex-col justify-start items-start text-[#dod2d6]'>
+            <h2 className='text-3xl font-bold'>12</h2>
+            <span className='text-md font-medium'>Pending Orders</span>
+          </div>
+          <div className='w-[46px] h-[47px] rounded-full bg-[#7367f01f] flex justify-center items-center text-xl'>
+            <AiOutlineShoppingCart className='text-[#7367f0] shadow-lg' />
+          </div>
+        </div>
+      </div>
+      <div className='w-full flex flex-wrap mt-7'>
+        <div className='w-full lg:w-7/12 lg:pr-3'>
+          <div className='w-full bg-[#283046] p-4 rounded-md'>
+            <Chart options={state.options} series={state.series} type='bar' height={350} />
+          </div>
+        </div>
+        <div className='w-full lg:w-5/12 lg:pl-4 mt-6 lg:mt-0'>
+          <div className='w-full bg-[#283046] p-4 rounded-md text-[#d0d2d6]'>
+            <div className='flex justify-between items-center'>
+              <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Recent Customer Message</h2>
+              <Link className='font-semibold text-sm text-[#d0d2d6]'>View ALL</Link>
+            </div>
+            <div className='flex-flec-col gap-2 pt-6 text-[#d0d2d6]'>
+              <ul className='relative border-1 border-slate-600 ml-4'>
+                <li className='mb-3 ml-6'>
+                  <div className='flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#00d1e848] rounded-full z-10'> 
+                    <img className='w-full rounded-full h-full shadow-lg' src="http://localhost:3000/images/admin.jpg" alt="" /> 
+                  </div>
+                  <div className='p-3 bg-slate-800 rounded-lg border-slate-600 shadow-sm'>
+                    <div className='flex justify-between items-center mb-2'>
+                      <Link className='text-md font-normal'>Customer Name</Link>
+                      <time className='mb-1 text-sm font-normal sm:order-last sm:mb-0'>4 day ago</time>
+                    </div>
+                    <div className='p-2 text-xs font-normal bg-slate-700 rounded-lg border border-slate-800'>
+                      How are you
+                    </div>
+                  </div>
+                </li>
+                <li className='mb-3 ml-6'>
+                  <div className='flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#00d1e848] rounded-full z-10'> 
+                    <img className='w-full rounded-full h-full shadow-lg' src="http://localhost:3000/images/admin.jpg" alt="" /> 
+                  </div>
+                  <div className='p-3 bg-slate-800 rounded-lg border-slate-600 shadow-sm'>
+                    <div className='flex justify-between items-center mb-2'>
+                      <Link className='text-md font-normal'>Seller Name</Link>
+                      <time className='mb-1 text-sm font-normal sm:order-last sm:mb-0'>4 day ago</time>
+                    </div>
+                    <div className='p-2 text-xs font-normal bg-slate-700 rounded-lg border border-slate-800'>
+                      How are you
+                    </div>
+                  </div>
+                </li>
+                <li className='mb-3 ml-6'>
+                  <div className='flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#00d1e848] rounded-full z-10'> 
+                    <img className='w-full rounded-full h-full shadow-lg' src="http://localhost:3000/images/admin.jpg" alt="" /> 
+                  </div>
+                  <div className='p-3 bg-slate-800 rounded-lg border-slate-600 shadow-sm'>
+                    <div className='flex justify-between items-center mb-2'>
+                      <Link className='text-md font-normal'>Seller Name</Link>
+                      <time className='mb-1 text-sm font-normal sm:order-last sm:mb-0'>4 day ago</time>
+                    </div>
+                    <div className='p-2 text-xs font-normal bg-slate-700 rounded-lg border border-slate-800'>
+                      How are you
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='w-full p-4 bg-[#283046] rounded-md mt-6'>
+        <div className='flex justify-between items-center'>
+          <h2 className='font-semibold text-lg text-[#d0d2d6] pb-3'>Recent Oders</h2>
+          <Link className='font-semibold text-sm text-[#d0d2d6]'>View All</Link>
+        </div>
+        <div className='realative overflow-x-auto'>
+          <table className='w-full text-sm text-left text-[#d0d2d6]'>
+            <thead className='text-sm text-[#d0d2d6] uppercase border-b border-slate-700'>
+              <tr>
+                <th scope='col' className='py-3 px-4'>Order Id</th>
+                <th scope='col' className='py-3 px-4'>Price</th>
+                <th scope='col' className='py-3 px-4'>Payment Status</th>
+                <th scope='col' className='py-3 px-4'>Order Status</th>
+                <th scope='col' className='py-3 px-4'>Active</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                [1, 2, 3, 4, 5].map((d, i) => <tr key={i}>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>#455fdf54545</td>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>$656</td>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                    <span>pending</span>
+                  </td>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                    <span>pending</span>
+                  </td>
+                  <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                    <Link>view</Link>
+                  </td>
+                </tr>)
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default AddProduct
+export default SellerDashboard
